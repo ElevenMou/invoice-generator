@@ -46,13 +46,16 @@
     --side-menu-width: 70px;
     --main-height: calc(100vh - 80px);
   }
+
   body {
     background-color: var(--color-background);
     color: var(--color-text);
   }
+
   * {
     box-sizing: border-box;
   }
+
   .dark {
     --color-background: #282828;
     --color-text: #fff;
@@ -60,40 +63,52 @@
     --color-text-dark: #fff;
     --color-card: #121212;
   }
+
   .side-menu-open {
     --side-menu-width: 250px;
   }
+
   #main-content:has(#app-side-menu) {
     margin-left: var(--side-menu-width);
     transition: all 0.3s;
   }
+
   h1 {
     @apply text-4xl font-bold;
   }
+
   h2 {
     @apply text-2xl font-bold;
   }
+
   h3 {
     @apply text-xl font-bold;
   }
+
   h4 {
     @apply text-lg font-bold;
   }
+
   h5 {
     @apply text-base font-bold;
   }
+
   h6 {
     @apply text-sm font-bold;
   }
+
   p {
     @apply text-base;
   }
+
   a {
     color: var(--color-primary-5);
   }
+
   a:hover {
     color: var(--color-primary-4);
   }
+
   input,
   textarea {
     width: 100%;
@@ -108,6 +123,7 @@
     resize: vertical;
     transition: border-color 0.3s, box-shadow 0.3s;
   }
+
   input:focus,
   textarea:focus {
     border-color: transparent;
@@ -115,11 +131,16 @@
   }
 
   input[type="checkbox"] {
+    display: none;
+  }
+
+  .custom-checkbox {
     width: 4.5rem;
     height: 2.5rem;
     position: relative;
   }
-  input[type="checkbox"]::before {
+
+  .custom-checkbox::before {
     content: "";
     display: block;
     width: 100%;
@@ -129,11 +150,13 @@
     background-color: var(--color-background);
     transition: background-color 0.3s, border-color 0.3s;
   }
-  input[type="checkbox"]:checked::before {
+
+  input[type="checkbox"]:checked+.custom-checkbox::before {
     background-color: var(--color-primary-5);
     border-color: var(--color-primary-5);
   }
-  input[type="checkbox"]::after {
+
+  .custom-checkbox::after {
     content: "";
     display: block;
     position: absolute;
@@ -145,7 +168,8 @@
     background-color: var(--color-neutral-0);
     transition: background-color 0.3s, left 0.3s, right 0.3s;
   }
-  input[type="checkbox"]:checked::after {
+
+  input[type="checkbox"]:checked+.custom-checkbox::after {
     left: calc(100% - 2.25rem);
     background-color: var(--color-neutral-0);
   }
@@ -154,6 +178,7 @@
     #main-content:has(#app-side-menu) {
       margin-left: 0;
     }
+
     #app-side-menu {
       width: 100%;
       height: calc(100vh - 80px);
@@ -161,10 +186,12 @@
       left: -100%;
       border-radius: 0;
     }
+
     .side-menu-open #app-side-menu {
       left: 0;
     }
   }
+
   table {
     width: 100%;
     border-collapse: separate;
@@ -175,20 +202,24 @@
     empty-cells: show;
     word-break: break-word;
   }
+
   table th,
   table td {
     padding: 12px 16px;
     border-bottom: 1px solid var(--color-primary-1);
   }
+
   table th {
     background-color: var(--color-primary-5);
     color: var(--color-neutral-0);
     font-weight: bold;
     text-align: left;
   }
+
   table td {
     background-color: var(--color-card);
   }
+
   @media (max-width: 900px) {
     table {
       display: block;
@@ -197,9 +228,11 @@
       border: 0;
       border-radius: 0;
     }
+
     table thead {
       display: none;
     }
+
     table tbody,
     table tfoot,
     table tr,
@@ -207,16 +240,19 @@
       display: block;
       width: 100%;
     }
+
     table td {
       border-bottom: 0;
       background-color: unset;
     }
+
     table td:before {
       content: attr(data-header);
       display: block;
       font-weight: bold;
       text-align: left;
     }
+
     table tr {
       position: relative;
       border: 1px solid var(--color-primary-1);
@@ -230,6 +266,7 @@
 .react-datepicker-wrapper {
   width: 100%;
 }
+
 input[id*="react-select"] {
   box-shadow: none !important;
 }
