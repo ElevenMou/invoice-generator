@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "react-tabs/style/react-tabs.css";
+
+@layer base {
+  :root {
+    /* Primary colors */
+    --color-primary-1: #ccc4f8;
+    --color-primary-2: #bbb1f5;
+    --color-primary-3: #a99ff2;
+    --color-primary-4: #827beb;
+    --color-primary-5: #5358e4;
+    --color-primary-6: #5358e4;
+    --color-primary-7: #4b4ec8;
+    --color-primary-8: #3c3b92;
+    --color-primary-9: #2b295f;
+
+    /* Neutrals */
+    --color-neutral-0: #ffffff;
+    --color-neutral-1: #f5f5f5;
+    --color-neutral-2: #e5e5e5;
+    --color-neutral-3: #d4d4d4;
+    --color-neutral-4: #a3a3a3;
+    --color-neutral-5: #737373;
+    --color-neutral-6: #525252;
+    --color-neutral-7: #404040;
+    --color-neutral-8: #262626;
+    --color-neutral-9: #171717;
+    --color-neutral-10: #000000;
+
+    /* Theme colors */
+    --color-background: #f5f5f5;
+    --color-text: #333;
+    --color-text-light: #666;
+    --color-text-dark: #000;
+    --color-card: #fff;
+
+    /* Feedback colors */
+    --color-error: #ff0000;
+    --color-warning: #ffae00;
+    --color-success: #58e453;
+    --color-info: #00aeff;
+
+    /* Layout */
+    --side-menu-width: 70px;
+    --main-height: calc(100vh - 80px);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+  * {
+    box-sizing: border-box;
+  }
+  .dark {
+    --color-background: #282828;
+    --color-text: #fff;
+    --color-text-light: #ccc;
+    --color-text-dark: #fff;
+    --color-card: #121212;
+  }
+  .side-menu-open {
+    --side-menu-width: 250px;
+  }
+  #main-content:has(#app-side-menu) {
+    margin-left: var(--side-menu-width);
+    transition: all 0.3s;
+  }
+  h1 {
+    @apply text-4xl font-bold;
+  }
+  h2 {
+    @apply text-2xl font-bold;
+  }
+  h3 {
+    @apply text-xl font-bold;
+  }
+  h4 {
+    @apply text-lg font-bold;
+  }
+  h5 {
+    @apply text-base font-bold;
+  }
+  h6 {
+    @apply text-sm font-bold;
+  }
+  p {
+    @apply text-base;
+  }
+  a {
+    color: var(--color-primary-5);
+  }
+  a:hover {
+    color: var(--color-primary-4);
+  }
+  input,
+  textarea {
+    width: 100%;
+    height: 2.75rem;
+    margin-top: 0.25rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-neutral-3);
+    border-radius: 0.375rem;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  input:focus,
+  textarea:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 2px var(--color-primary-5);
+  }
+
+  input[type="checkbox"] {
+    width: 4.5rem;
+    height: 2.5rem;
+    position: relative;
+  }
+  input[type="checkbox"]::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--color-neutral-3);
+    border-radius: 20px;
+    background-color: var(--color-background);
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  input[type="checkbox"]:checked::before {
+    background-color: var(--color-primary-5);
+    border-color: var(--color-primary-5);
+  }
+  input[type="checkbox"]::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100px;
+    background-color: var(--color-neutral-0);
+    transition: background-color 0.3s, left 0.3s, right 0.3s;
+  }
+  input[type="checkbox"]:checked::after {
+    left: calc(100% - 2.25rem);
+    background-color: var(--color-neutral-0);
+  }
+
+  @media (max-width: 768px) {
+    #main-content:has(#app-side-menu) {
+      margin-left: 0;
+    }
+    #app-side-menu {
+      width: 100%;
+      height: calc(100vh - 80px);
+      top: 80px;
+      left: -100%;
+      border-radius: 0;
+    }
+    .side-menu-open #app-side-menu {
+      left: 0;
+    }
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-primary-1);
+    border-spacing: 0;
+    empty-cells: show;
+    word-break: break-word;
+  }
+  table th,
+  table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-primary-1);
+  }
+  table th {
+    background-color: var(--color-primary-5);
+    color: var(--color-neutral-0);
+    font-weight: bold;
+    text-align: left;
+  }
+  table td {
+    background-color: var(--color-card);
+  }
+  @media (max-width: 900px) {
+    table {
+      display: block;
+      overflow: auto;
+      position: relative;
+      border: 0;
+      border-radius: 0;
+    }
+    table thead {
+      display: none;
+    }
+    table tbody,
+    table tfoot,
+    table tr,
+    table td {
+      display: block;
+      width: 100%;
+    }
+    table td {
+      border-bottom: 0;
+      background-color: unset;
+    }
+    table td:before {
+      content: attr(data-header);
+      display: block;
+      font-weight: bold;
+      text-align: left;
+    }
+    table tr {
+      position: relative;
+      border: 1px solid var(--color-primary-1);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      background-color: var(--color-card);
+    }
+  }
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+input[id*="react-select"] {
+  box-shadow: none !important;
+}
