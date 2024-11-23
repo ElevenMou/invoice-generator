@@ -231,20 +231,28 @@ const MyDocument = ({ invoice }: { invoice: IInvoiceDetails }) => {
           }}
         >
           <ClientDetails />
-          <View style={{ gap: 12 }}>
+            <View style={{ gap: 12 }}>
             <LabelValue
               label={labels[invoice.settings?.language || "en"].date}
-              value={new Date(invoice.date).toLocaleString("fr-MA")}
+              value={new Date(invoice.date).toLocaleDateString("fr-MA", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+              })}
               align="flex-end"
             />
             {invoice.settings?.showDueDate && (
               <LabelValue
-                label="Due Date:"
-                value={new Date(invoice.dueDate).toLocaleString("fr-MA")}
-                align="flex-end"
+              label="Due Date:"
+              value={new Date(invoice.dueDate).toLocaleDateString("fr-MA", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+              })}
+              align="flex-end"
               />
             )}
-          </View>
+            </View>
         </View>
       </View>
     );
