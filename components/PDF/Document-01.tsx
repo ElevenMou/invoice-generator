@@ -234,13 +234,13 @@ const MyDocument = ({ invoice }: { invoice: IInvoiceDetails }) => {
           <View style={{ gap: 12 }}>
             <LabelValue
               label={labels[invoice.settings?.language || "en"].date}
-              value={new Date(invoice.date).toLocaleDateString()}
+              value={new Date(invoice.date).toLocaleString("fr-MA")}
               align="flex-end"
             />
             {invoice.settings?.showDueDate && (
               <LabelValue
                 label="Due Date:"
-                value={new Date(invoice.dueDate).toLocaleDateString()}
+                value={new Date(invoice.dueDate).toLocaleString("fr-MA")}
                 align="flex-end"
               />
             )}
@@ -259,8 +259,8 @@ const MyDocument = ({ invoice }: { invoice: IInvoiceDetails }) => {
           flex: 2,
           alignItems: "flex-end",
           borderTop: `1px solid ${
-            invoice.settings?.colors?.find((c) => c.label === "Card")
-              ?.value || "#F2F5F9"
+            invoice.settings?.colors?.find((c) => c.label === "Card")?.value ||
+            "#F2F5F9"
           }`,
           padding: 12,
         }}
